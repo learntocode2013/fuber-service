@@ -1,0 +1,328 @@
+{
+	"info": {
+		"_postman_id": "83c86b52-1ede-42cd-b661-1d0278f2aabb",
+		"name": "Fuber_labs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "New_User_Registers_And_Travels_From_A_to_B",
+			"item": [
+				{
+					"name": "Register a new rider",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"addresses\": [\n            {\n                \"area\": \"Hosa Rd\",\n                \"cityOrTown\": \"Bangalore\",\n                \"houseNo\": \"F-918\",\n                \"pinCode\": 560100,\n                \"propertyName\": \"GR Sagar Nivas Appt\",\n                \"state\": \"Karnataka\",\n                \"type\": \"Home\",\n                \"order\": \"Primary\"\n            }\n        ],\n        \"contactNumber\": \"91-008213424\",\n        \"emailAddress\": \"demo_rider@yahoo.com\",\n        \"name\": \"DemoRider\",\n        \"userType\": \"Rider\"\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/fuber/riders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"fuber",
+								"riders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register a new ride request (No color preference)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"destination\": {\n        \"address\": {\n            \"area\": \"Sarjapur Rd\",\n            \"cityOrTown\": \"Bangalore\",\n            \"pincode\": 560105,\n            \"propertyName\": \"Total Mall\",\n            \"state\": \"Karnataka\",\n            \"type\": \"Outside\"\n        },\n        \"coordinate\": {\n            \"latitude\": 12.8,\n            \"longitude\": 77.5\n        }\n    },\n    \"riderId\": \"161d9fd0-b60a-4976-9d7a-9d70a7e5cd0a\",\n    \"source\": {\n        \"address\": {\n            \"area\": \"Hosa Rd\",\n            \"cityOrTown\": \"Bangalore\",\n            \"houseNo\": \"F-918\",\n            \"pincode\": 560100,\n            \"propertyName\": \"GR Sagar Nivas Appt\",\n            \"state\": \"Karnataka\",\n            \"type\": \"Home\"\n        },\n        \"coordinate\": {\n            \"latitude\": 12.9,\n            \"longitude\": 77.6\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/fuber/rideRequests",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"fuber",
+								"rideRequests"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register a new ride request (With Color Preference)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"destination\": {\n        \"address\": {\n            \"area\": \"Sarjapur Rd\",\n            \"cityOrTown\": \"Bangalore\",\n            \"pincode\": 560105,\n            \"propertyName\": \"Total Mall\",\n            \"state\": \"Karnataka\",\n            \"type\": \"Outside\"\n        },\n        \"coordinate\": {\n            \"latitude\": 12.8,\n            \"longitude\": 77.5\n        }\n    },\n    \"riderId\": \"582cf975-5ef4-4d1f-bb30-505f5a809710\",\n    \"source\": {\n        \"address\": {\n            \"area\": \"Hosa Rd\",\n            \"cityOrTown\": \"Bangalore\",\n            \"houseNo\": \"F-918\",\n            \"pincode\": 560100,\n            \"propertyName\": \"GR Sagar Nivas Appt\",\n            \"state\": \"Karnataka\",\n            \"type\": \"Home\"\n        },\n        \"coordinate\": {\n            \"latitude\": 12.9,\n            \"longitude\": 77.6\n        }\n    },\n    \"userPreference\": {\n    \t\"preferredVehicleColor\": \"Pink\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/fuber/rideRequests",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"fuber",
+								"rideRequests"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch details about a ride request",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/fuber/rideRequests/{{trackingId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"fuber",
+								"rideRequests",
+								"{{trackingId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch a trip",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/fuber/trips/{{trackingId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"fuber",
+								"trips",
+								"{{trackingId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Start a trip",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"assignedVehicle\": {\n        \"color\": \"Pink\",\n        \"driver\": {\n            \"addresses\": [\n                {\n                    \"area\": \"Devanahalli\",\n                    \"cityOrTown\": \"Bangalore\",\n                    \"houseNo\": \"115 A/1\",\n                    \"order\": \"Primary\",\n                    \"pinCode\": 560102,\n                    \"propertyName\": \"Peace home\",\n                    \"state\": \"Karnataka\",\n                    \"type\": \"Home\"\n                }\n            ],\n            \"contactNumber\": \"91-008213416\",\n            \"emailAddress\": \"driver_1@yahoo.com\",\n            \"name\": \"Driver-1\",\n            \"uniqueId\": \"ec2da5e5-4f70-4f4c-a054-e124a0c507b4\",\n            \"userType\": \"Driver\"\n        },\n        \"presentLocation\": {\n            \"latitude\": 13.9,\n            \"longitude\": 79.6\n        },\n        \"status\": \"BOOKED_FOR_RIDE\",\n        \"type\": \"HATCHBACK\",\n        \"vehicleNumber\": \"KA-51MG-9125\"\n    },\n    \"destination\": {\n        \"address\": {\n            \"area\": \"Sarjapur Rd\",\n            \"cityOrTown\": \"Bangalore\",\n            \"order\": \"Primary\",\n            \"pinCode\": 0,\n            \"propertyName\": \"Total Mall\",\n            \"state\": \"Karnataka\",\n            \"type\": \"Outside\"\n        },\n        \"coordinate\": {\n            \"latitude\": 12.8,\n            \"longitude\": 77.5\n        }\n    },\n    \"distanceCoveredInKm\": 0.0,\n    \"endTime\": 0,\n    \"estimatedFare\": 5.430580295304385,\n    \"fareOnCompletion\": 0.0,\n    \"presentState\": \"Started\",\n    \"riderId\": \"0726d34f-c742-4e48-8fbe-865be9d704a3\",\n    \"source\": {\n        \"address\": {\n            \"area\": \"Hosa Rd\",\n            \"cityOrTown\": \"Bangalore\",\n            \"houseNo\": \"F-918\",\n            \"order\": \"Primary\",\n            \"pinCode\": 0,\n            \"propertyName\": \"GR Sagar Nivas Appt\",\n            \"state\": \"Karnataka\",\n            \"type\": \"Home\"\n        },\n        \"coordinate\": {\n            \"latitude\": 12.9,\n            \"longitude\": 77.6\n        }\n    },\n    \"startTime\": 0,\n    \"timeTakenInMillis\": 0,\n    \"trackingId\": \"954ee152-4152-4e34-b936-b0c0b7e23a61\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/fuber/trips/{{trackingId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"fuber",
+								"trips",
+								"{{trackingId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Complete a trip",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"assignedVehicle\": {\n        \"color\": \"Pink\",\n        \"driver\": {\n            \"addresses\": [\n                {\n                    \"area\": \"Devanahalli\",\n                    \"cityOrTown\": \"Bangalore\",\n                    \"houseNo\": \"115 A/1\",\n                    \"order\": \"Primary\",\n                    \"pinCode\": 560102,\n                    \"propertyName\": \"Peace home\",\n                    \"state\": \"Karnataka\",\n                    \"type\": \"Home\"\n                }\n            ],\n            \"contactNumber\": \"91-008213416\",\n            \"emailAddress\": \"driver_1@yahoo.com\",\n            \"name\": \"Driver-1\",\n            \"uniqueId\": \"ec2da5e5-4f70-4f4c-a054-e124a0c507b4\",\n            \"userType\": \"Driver\"\n        },\n        \"presentLocation\": {\n            \"latitude\": 13.9,\n            \"longitude\": 79.6\n        },\n        \"status\": \"BOOKED_FOR_RIDE\",\n        \"type\": \"HATCHBACK\",\n        \"vehicleNumber\": \"KA-51MG-9125\"\n    },\n    \"destination\": {\n        \"address\": {\n            \"area\": \"Sarjapur Rd\",\n            \"cityOrTown\": \"Bangalore\",\n            \"order\": \"Primary\",\n            \"pinCode\": 0,\n            \"propertyName\": \"Total Mall\",\n            \"state\": \"Karnataka\",\n            \"type\": \"Outside\"\n        },\n        \"coordinate\": {\n            \"latitude\": 12.8,\n            \"longitude\": 77.5\n        }\n    },\n    \"distanceCoveredInKm\": 0.0,\n    \"endTime\": 0,\n    \"estimatedFare\": 5.430580295304385,\n    \"fareOnCompletion\": 0.0,\n    \"presentState\": \"Completed\",\n    \"riderId\": \"0726d34f-c742-4e48-8fbe-865be9d704a3\",\n    \"source\": {\n        \"address\": {\n            \"area\": \"Hosa Rd\",\n            \"cityOrTown\": \"Bangalore\",\n            \"houseNo\": \"F-918\",\n            \"order\": \"Primary\",\n            \"pinCode\": 0,\n            \"propertyName\": \"GR Sagar Nivas Appt\",\n            \"state\": \"Karnataka\",\n            \"type\": \"Home\"\n        },\n        \"coordinate\": {\n            \"latitude\": 12.9,\n            \"longitude\": 77.6\n        }\n    },\n    \"startTime\": 1580224893125,\n    \"timeTakenInMillis\": 0,\n    \"trackingId\": \"96c21776-7b5f-4aab-b0d5-663a0022d786\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/fuber/trips/{{trackingId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"fuber",
+								"trips",
+								"{{trackingId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch bill for a trip",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/fuber/bill/{{trackingId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"fuber",
+								"bill",
+								"{{trackingId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Submit feedback for trip",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"rating\": \"Three_Star\",\n        \"reviewFor\": {\n            \"addresses\": [\n                {\n                    \"area\": \"Devanahalli\",\n                    \"cityOrTown\": \"Bangalore\",\n                    \"houseNo\": \"115 A/1\",\n                    \"order\": \"Primary\",\n                    \"pinCode\": 560102,\n                    \"propertyName\": \"Peace home\",\n                    \"state\": \"Karnataka\",\n                    \"type\": \"Home\"\n                }\n            ],\n            \"contactNumber\": \"91-008213486\",\n            \"emailAddress\": \"driver_8@yahoo.com\",\n            \"name\": \"Driver-8\",\n            \"uniqueId\": \"36aaeb7b-adae-4741-b505-ec9108cb90b9\",\n            \"userType\": \"Driver\"\n        },\n        \"reviewFrom\": {\n            \"addresses\": [\n                {\n                    \"area\": \"Old Airport Rd\",\n                    \"cityOrTown\": \"Bangalore\",\n                    \"houseNo\": \"Flat-202\",\n                    \"order\": \"Primary\",\n                    \"pinCode\": 560104,\n                    \"propertyName\": \"Neeladri Enclave\",\n                    \"state\": \"Karnataka\",\n                    \"type\": \"Home\"\n                }\n            ],\n            \"contactNumber\": \"91-008213422\",\n            \"emailAddress\": \"rider_2@yahoo.com\",\n            \"name\": \"Rider-2\",\n            \"uniqueId\": \"5ba18782-e132-4b68-ac17-363e72f607f7\",\n            \"userType\": \"Rider\"\n        },\n        \"trackingId\": \"142e8075-50e0-4a91-a5a4-d4875ac4abf9\"\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/fuber/reviews/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"fuber",
+								"reviews",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "7658d5cb-9812-4ce1-9e46-ec7cc32518a1",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "b71e38a8-83f3-4600-8a7d-3c7e7ce1a132",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "e2b6a692-a922-4329-8c19-c4575266036f",
+			"key": "trackingId",
+			"value": "7d2b6019-68a1-43af-8a82-178835941f27",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
+}
